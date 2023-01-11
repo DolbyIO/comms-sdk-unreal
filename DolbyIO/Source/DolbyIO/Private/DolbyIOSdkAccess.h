@@ -1,9 +1,11 @@
-// Copyright 2022 Dolby Laboratories
+// Copyright 2023 Dolby Laboratories
 
 #pragma once
 
 #include "Containers/UnrealString.h"
 #include "Templates/UniquePtr.h"
+
+#include <string>
 
 namespace dolbyio::comms
 {
@@ -16,7 +18,6 @@ class UDolbyIOSubsystem;
 
 namespace DolbyIO
 {
-
 	class FSdkAccess final
 	{
 	public:
@@ -27,7 +28,7 @@ namespace DolbyIO
 
 		void Connect(const FString& ConferenceName, const FString& UserName, const FString& ExternalID,
 		             const FString& AvatarURL);
-		void ConnectToDemoConference();
+		void DemoConference();
 		void Disconnect();
 
 		void SetSpatialEnvironmentScale(float);
@@ -56,8 +57,7 @@ namespace DolbyIO
 		UDolbyIOSubsystem& DolbyIOSubsystem;
 
 		dolbyio::comms::conference_status ConferenceStatus;
-		FString LocalParticipantID;
-		TArray<FString> RemoteParticipantIDs;
+		std::string LocalParticipantID;
 
 		TUniquePtr<dolbyio::comms::sdk> Sdk;
 		TUniquePtr<dolbyio::comms::refresh_token> RefreshTokenCb;
@@ -67,6 +67,5 @@ namespace DolbyIO
 		bool bIsAlive = true;
 		bool bIsInputMuted;
 		bool bIsOutputMuted;
-		bool bIsDemo;
 	};
 }

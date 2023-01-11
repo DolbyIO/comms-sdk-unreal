@@ -1,9 +1,8 @@
-// Copyright 2022 Dolby Laboratories
+// Copyright 2023 Dolby Laboratories
 
 #include "DolbyIOSubsystem.h"
 
-#include "DolbyIO/Authenticator.h"
-#include "DolbyIO/SdkAccess.h"
+#include "DolbyIOSdkAccess.h"
 
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
@@ -14,7 +13,6 @@ void UDolbyIOSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 	CppSdk = MakeShared<DolbyIO::FSdkAccess>(*this);
-	Authenticator = MakeShared<DolbyIO::FAuthenticator>(*this);
 	GameInstance = GetGameInstance();
 
 	if (GameInstance)
@@ -30,19 +28,14 @@ void UDolbyIOSubsystem::SetToken(const FString& Token)
 {
 	CppSdk->SetToken(Token);
 }
-void UDolbyIOSubsystem::SetTokenUsingKeyAndSecret(const FString& AppKey, const FString& AppSecret,
-                                                  int TokenExpirationTimeInSeconds)
-{
-	Authenticator->GetToken(AppKey, AppSecret, TokenExpirationTimeInSeconds);
-}
 void UDolbyIOSubsystem::Connect(const FString& ConferenceName, const FString& UserName, const FString& ExternalID,
                                 const FString& AvatarURL)
 {
 	CppSdk->Connect(ConferenceName, UserName, ExternalID, AvatarURL);
 }
-void UDolbyIOSubsystem::ConnectToDemoConference()
+void UDolbyIOSubsystem::DemoConference()
 {
-	CppSdk->ConnectToDemoConference();
+	CppSdk->DemoConference();
 }
 void UDolbyIOSubsystem::Disconnect()
 {

@@ -1,11 +1,11 @@
-// Copyright 2022 Dolby Laboratories
+// Copyright 2023 Dolby Laboratories
 
 using System.IO;
 using UnrealBuildTool;
 
-public class DolbyIOModule : ModuleRules
+public class DolbyIO : ModuleRules
 {
-	public DolbyIOModule(ReadOnlyTargetRules Target) : base(Target)
+	public DolbyIO(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 

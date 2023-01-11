@@ -91,13 +91,11 @@ You may use the [Set Token Using Key and Secret](#set-token-using-key-and-secret
 Example:  
 ![example](Images/on_token_needed.PNG)
 
-### Set Token Using Key and Secret
-Initializes or refreshes the client access token. The function is similar to [Set Token](#set-token), except it takes an app key and secret as parameters and automatically generates the token.
-
+### Get Dolby.io Token
 For convenience during early development and prototyping, this function is provided to acquire the client access token directly from within the application. However, please note **we do not recommend** using this mechanism in the production software for [security best practices](https://docs.dolby.io/communications-apis/docs/guides-client-authentication). App secret needs to be protected and not included in the application.
 
 Example:  
-![example](Images/set_token_using_key_and_secret.PNG)
+![example](Images/get_dolbyio_token.PNG)
 
 ### Connect
 Connects to a conference. The method takes a conference name and user name as parameters. Triggers [On Connected](#on-connected) if successful.
@@ -105,11 +103,11 @@ Connects to a conference. The method takes a conference name and user name as pa
 Example:  
 ![example](Images/on_initialized.PNG)
 
-### Connect to Demo Conference
-Connects to a demo conference, which automatically brings in 3 invisible bots into the conference as a quick way to validate the connection to the service with audio functionality. One of the bots is placed to the left of point {0, 0, 0} in the level, one is placed to the right and one circles around that point. Triggers [On Connected](#on-connected) if successful.
+### Demo Conference
+Connects to a demo conference, which automatically brings in 3 invisible bots into the conference as a quick way to validate the connection to the service with audio functionality. The bots are placed at the following in-game coordinates: {250, -500, 0}, {0, 0, 0} and {250, 500, 0}. Triggers [On Connected](#on-connected) if successful.
 
 Example:  
-![example](Images/connect_to_demo_conference.PNG)
+![example](Images/demo_conference.PNG)
 
 ### Disconnect
 Disconnects from the current conference. Triggers [On Disconnected](#on-disconnected) when complete.
